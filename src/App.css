@@ -1,11 +1,8 @@
-.App {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
+/* section */
 
-.welcome-title {
-  font-size: 80px;
-  color: greenyellow;
+section {
+  justify-content: center;
+  min-height: 100vh;
+  max-width: 400px;
+  margin: 0 auto;
 }

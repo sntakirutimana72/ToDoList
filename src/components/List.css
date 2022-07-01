@@ -1,0 +1,143 @@
+.no-spacing {
+  padding: 0;
+  margin: 0;
+}
+
+.flex-align-center {
+  display: flex;
+  align-items: center;
+}
+
+ul {
+  list-style: none;
+}
+
+.list-wrapper {
+  background: #202070;
+}
+
+/* form */
+
+form {
+  width: 100%;
+}
+
+/* form heading && field-wrap */
+
+.field-wrap {
+  gap: 10px;
+}
+
+.heading-wrapper,
+.field-wrap {
+  justify-content: space-between;
+}
+
+.heading-wrapper h1 {
+  font-size: 20px;
+}
+
+i {
+  color: grey;
+}
+
+.heading-wrapper i {
+  transform: rotate(90deg);
+}
+
+.field-wrap span i {
+  transform: rotate(90deg);
+}
+
+/* list-container-container */
+
+.list-container {
+  width: 100%;
+  gap: 2px;
+}
+
+.list-container li {
+  gap: 10px;
+}
+
+.status-completed {
+  color: #3f383875;
+}
+
+.task-selected {
+  background: #101030;
+  color: grey !important;
+}
+
+.task-selected .task-desc::placeholder {
+  color: inherit;
+}
+
+.task-desc {
+  color: inherit;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 24px;
+  width: 100%;
+}
+
+.status-completed .task-desc {
+  text-decoration: line-through;
+}
+
+button {
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+li button {
+  cursor: move;
+}
+
+.list-refresh-btn,
+li button {
+  background: none;
+}
+
+button:focus {
+  border: none;
+}
+
+button.fa-trash {
+  cursor: pointer;
+}
+
+.list-clear-btn {
+  padding: 15px 5px;
+  width: 100%;
+  background-color: orangered;
+}
+
+.list-clear-btn:disabled {
+  cursor: not-allowed;
+  background-color: blue;
+  opacity: 0.1;
+}
+
+input[type='text'] {
+  box-sizing: border-box;
+  border: none;
+  width: 100%;
+  padding: 5px;
+  background: none;
+}
+
+input[type='text']:focus {
+  outline: none;
+  border: none;
+}
+
+input[name='desc']::placeholder {
+  font-style: italic;
+}
+
+.row {
+  padding: 10px 15px;
+  border-bottom: 1px solid #20202025;
+}
