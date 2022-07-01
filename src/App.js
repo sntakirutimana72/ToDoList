@@ -1,11 +1,10 @@
 import './App.css';
+import List from './components/List';
 
-function App() {
-  return (
-    <div className="App">
-      <h1 className="welcome-title">React Template</h1>
-    </div>
-  );
-}
+const App = () => (
+  <section className="flex-column">
+    <List />
+  </section>
+);
 
 export default App;
