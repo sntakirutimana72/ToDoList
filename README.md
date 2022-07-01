@@ -1,6 +1,6 @@
-# React App Template
+# TODO-List App
 
-A React app template that consists of linter configurations and other additional boilerplate code. Built with HTML5, CSS, JavaScript &amp; React.
+A TODO-List app allows user to perform various actions like creating a task, updating a task, and removing a task. User generated data get stored in a browser storage using **localstorage** API for later use.
 
 
 ## Built With
