@@ -28,6 +28,10 @@ form {
   gap: 10px;
 }
 
+.heading-wrapper {
+  background: blue;
+}
+
 .heading-wrapper,
 .field-wrap {
   justify-content: space-between;
@@ -58,31 +62,26 @@ i {
 
 .list-container li {
   gap: 10px;
+  background: #202060;
 }
 
-.status-completed {
-  color: #3f383875;
+li.item-focus {
+  background: orangered;
 }
 
-.task-selected {
-  background: #101030;
-  color: grey !important;
-}
-
-.task-selected .task-desc::placeholder {
+.item-focus .task-desc::placeholder {
   color: inherit;
 }
 
 .task-desc {
-  color: inherit;
-  font-family: inherit;
   font-size: 15px;
   line-height: 24px;
   width: 100%;
 }
 
-.status-completed .task-desc {
+.fulfilled .task-desc {
   text-decoration: line-through;
+  text-decoration-color: greenyellow;
 }
 
 button {
@@ -111,7 +110,7 @@ button.fa-trash {
 .list-clear-btn {
   padding: 15px 5px;
   width: 100%;
-  background-color: orangered;
+  background-color: purple;
 }
 
 .list-clear-btn:disabled {
@@ -128,6 +127,10 @@ input[type='text'] {
   background: none;
 }
 
+input[type='text']::placeholder {
+  color: rgba(245, 245, 245, 0.753);
+}
+
 input[type='text']:focus {
   outline: none;
   border: none;
@@ -135,6 +138,16 @@ input[type='text']:focus {
 
 input[name='desc']::placeholder {
   font-style: italic;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  caret-color: white;
+  -webkit-text-fill-color: whitesmoke;
+  box-shadow: 0 0 0px 1000px #202070 inset;
+  -webkit-box-shadow: 0 0 0px 1000px #202070 inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 .row {
