@@ -1,9 +1,9 @@
+import ToDoList from './components/ToDoList';
 import './App.css';
-import List from './components/List';
 
 const App = () => (
   <section className="flex-column">
-    <List />
+    <ToDoList />
   </section>
 );
 
