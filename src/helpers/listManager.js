@@ -1,4 +1,4 @@
-const DATA_KEY = 'TODO-List';
+const DATA_KEY = 'ToDoList';
 
 export const getItems = () => {
   const items = localStorage.getItem(DATA_KEY);

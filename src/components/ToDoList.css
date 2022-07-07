@@ -41,16 +41,29 @@ form {
   font-size: 20px;
 }
 
-i {
-  color: grey;
-}
-
 .heading-wrapper i {
   transform: rotate(90deg);
 }
 
-.field-wrap span i {
+button {
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+li button {
+  cursor: move;
+  background: none;
+}
+
+button:focus {
+  border: none;
+}
+
+.field-wrap button {
   transform: rotate(90deg);
+  background: none;
+  color: grey;
 }
 
 /* list-container-container */
@@ -82,25 +95,6 @@ li.item-focus {
 .fulfilled .task-desc {
   text-decoration: line-through;
   text-decoration-color: greenyellow;
-}
-
-button {
-  padding: 0;
-  border: none;
-  cursor: pointer;
-}
-
-li button {
-  cursor: move;
-}
-
-.list-refresh-btn,
-li button {
-  background: none;
-}
-
-button:focus {
-  border: none;
 }
 
 button.fa-trash {
