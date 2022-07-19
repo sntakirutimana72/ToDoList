@@ -1,0 +1,16 @@
+.TodoList {
+  position: relative;
+  flex: 1;
+  padding: 1.015rem;
+}
+
+.NoTodos {
+  position: absolute;
+  top: calc(50% - 60px);
+  right: 0;
+  left: 0;
+  text-align: center;
+  font-size: 40px;
+  line-height: 52px;
+  color: #e8e8e8;
+}

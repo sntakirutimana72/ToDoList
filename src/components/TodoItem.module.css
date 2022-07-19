@@ -1,0 +1,18 @@
+.TodoItem {
+  display: flex;
+  padding: 1.015rem 1.025rem;
+  gap: 10px;
+}
+
+.TodoItem:not(:last-child) {
+  margin-bottom: 10px;
+  border-bottom: solid 1px #e8e8e880;
+}
+
+.TodoItem [type="text"] {
+  font-size: 16px;
+}
+
+.TodoItem button {
+  color: #a30;
+}

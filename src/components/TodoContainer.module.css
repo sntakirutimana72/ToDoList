@@ -1,0 +1,10 @@
+.TodoContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 2.25rem);
+  max-width: 380px;
+  margin: 0 auto;
+  background: #fafafa;
+  border-radius: 5px;
+  box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.05);
+}

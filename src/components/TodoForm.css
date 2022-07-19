@@ -1,0 +1,39 @@
+form {
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  background-color: #fff;
+}
+
+.form-title {
+  font-size: 28px;
+  padding: 1.115rem;
+}
+
+.add-field {
+  display: flex;
+  align-items: center;
+  padding: 0.4rem 1.125rem;
+  background-color: #fcfcfe;
+}
+
+.add-btn {
+  color: grey;
+  padding: 4px 6px;
+}
+
+.add-btn:hover,
+.add-btn:focus {
+  color: #fff;
+  background-color: #60ff00;
+}
+
+[name='title'] {
+  padding: 5px 0;
+  font-size: 15px;
+  font-style: italic;
+}
+
+[name='title']::placeholder {
+  color: inherit !important;
+  opacity: 0.25;
+}

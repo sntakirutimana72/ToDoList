@@ -1,49 +1,35 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { useState } from 'react';
+import './TodoForm.css';
 
-class ToDoForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { title: '' };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+const TodoForm = () => {
+  const [title, setTitle] = useState('');
 
-  handleChange({ target }) {
-    this.setState({ title: target.value });
-  }
+  const onText = ({ target }) => {
+    setTitle(target.value);
+  };
+  const onSubmit = (e) => {
+    e.preventDefault();
+  };
 
-  handleSubmit(event) {
-    event.preventDefault();
-    const { addItem } = this.props;
-    const { title } = this.state;
-    addItem(title);
-    this.setState({ title: '' });
-  }
+  return (
+    <form onSubmit={onSubmit}>
+      <h1 className="form-title">Today&apos;s Todo</h1>
+      <div className="add-field">
+        <input
+          type="text"
+          name="title"
+          value={title}
+          onChange={onText}
+          placeholder="Add Title"
+        />
+        <button
+          type="submit"
+          aria-label="submit"
+          className="fa fa-plus btn add-btn"
+        />
+      </div>
+    </form>
+  );
+};
 
-  render() {
-    const { title } = this.state;
-
-    return (
-      <form onSubmit={this.handleSubmit} className="list-form">
-        <div className="flex-align-center heading-wrapper row">
-          <h1 className="no-spacing">Today&apos;s TODO List</h1>
-        </div>
-        <div className="flex-align-center field-wrap row">
-          <input
-            type="text"
-            name="desc"
-            value={title}
-            placeholder="Add to your list.."
-            onChange={this.handleChange}
-          />
-          <button type="submit" aria-label="submit" className="fa fa-level-down" />
-        </div>
-      </form>
-    );
-  }
-}
-
-ToDoForm.propTypes = { addItem: PropTypes.func.isRequired };
-
-export default ToDoForm;
+export default TodoForm;

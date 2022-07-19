@@ -1,4 +1,4 @@
-const DATA_KEY = 'ToDoList';
+const DATA_KEY = 'Todo';
 
 export const getItems = () => {
   const items = localStorage.getItem(DATA_KEY);
@@ -8,7 +8,3 @@ export const getItems = () => {
 export const storeItems = (items) => {
   localStorage.setItem(DATA_KEY, JSON.stringify(items));
 };
-
-export const hasFulfilled = (items) => items.find(
-  ({ completed }) => completed === true,
-);

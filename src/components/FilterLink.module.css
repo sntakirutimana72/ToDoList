@@ -1,0 +1,14 @@
+.FilterLink {
+  color: grey;
+  font-size: 12px;
+  padding: 0.225rem 0.515rem;
+  background-color: #f5f6fa;
+  margin-right: 4px;
+  text-transform: uppercase;
+  font-family: "Roboto Slab", sans-serif;
+}
+
+.FilterLink:disabled {
+  background: #101050;
+  color: #f0f;
+}

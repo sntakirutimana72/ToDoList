@@ -1,107 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import ToDoForm from './ToDoForm';
-import ToDoItem from './ToDoItem';
-import { getItems, hasFulfilled, storeItems } from '../helpers/listManager';
+import { useSelector } from 'react-redux';
+import TodoItem from './TodoItem';
+import { getVisibleTodos } from '../redux/reducers/todos';
 
-import './ToDoList.css';
+import styles from './TodoList.module.css';
 
-const ToDoList = () => {
-  const [items, setItems] = useState();
-  const [focused, setFocused] = useState();
-
-  const removeItems = () => {
-    const newItems = [...items].filter(({ completed, index }) => {
-      if (completed && index === focused) {
-        setFocused();
-      }
-      return !completed;
-    });
-    newItems.forEach((item, index) => {
-      if (item.index === focused) {
-        setFocused(index + 1);
-      }
-      item.index = index + 1;
-    });
-    setItems(newItems);
-  };
-
-  const addItem = (title) => {
-    const newItem = {
-      index: items.length + 1,
-      description: title,
-      completed: false,
-    };
-    setItems([...items, newItem]);
-  };
-
-  const removeItem = (id) => {
-    const newItems = items.filter(({ index }) => index !== id);
-    newItems.forEach((item, index) => {
-      item.index = index + 1;
-    });
-    storeItems(newItems);
-    setItems(newItems);
-
-    if (focused === id) {
-      setFocused();
-    }
-  };
-
-  const updateStatus = (id, state) => {
-    const newItems = [...items];
-    newItems[id - 1].completed = state;
-    setItems(newItems);
-  };
-
-  const updateItem = (id, title) => {
-    const newItems = [...items];
-    const updatedItem = newItems.find(({ index }) => index === id);
-    updatedItem.description = title;
-    setItems(newItems);
-  };
-
-  const changeFocus = (id) => {
-    setFocused(id);
-  };
-
-  useEffect(() => {
-    if (!items) {
-      setItems(getItems());
-    } else {
-      storeItems([...items]);
-    }
-  }, [items]);
-
-  const toggleClear = items && !hasFulfilled([...items]);
+const TodoList = () => {
+  const todos = useSelector(getVisibleTodos);
+  const isEmpty = todos.length === 0;
 
   return (
-    <div className="list-wrapper">
-      <ToDoForm addItem={addItem} />
-      <ul className="flex-column list-container no-spacing">
-        {items && items.map((item) => (
-          <ToDoItem
-            key={item.index}
-            todo={{
-              item,
-              changeFocus,
-              updateItem,
-              removeItem,
-              updateStatus,
-              focus: focused === item.index,
-            }}
-          />
-        ))}
-      </ul>
-      <button
-        type="button"
-        className="list-clear-btn"
-        onClick={removeItems}
-        disabled={toggleClear}
-      >
-        Clear all completed
-      </button>
+    <div className={styles.TodoList}>
+      {!isEmpty && (
+        <ul>
+          {todos.map((todo) => <TodoItem key={todo.id} todo={todo} />)}
+        </ul>
+      )}
+      {isEmpty && (
+        <p className={styles.NoTodos}>No Tasks</p>
+      )}
     </div>
   );
 };
 
-export default ToDoList;
+export default TodoList;

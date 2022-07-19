@@ -1,76 +1,46 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import { toggleTodo, updateTodo } from '../redux/actions/todos';
 
-const ToDoItem = ({ todo }) => {
-  const {
-    item,
-    changeFocus,
-    updateItem,
-    removeItem,
-    updateStatus,
-    focus,
-  } = todo;
-  const [title, setTitle] = useState('');
+import styles from './TodoItem.module.css';
 
-  const handleFocus = () => {
-    if (!focus) {
-      changeFocus(item.index);
-    }
+const TodoItem = ({ todo }) => {
+  const [title, setTitle] = useState(todo.title);
+  const [focus, setFocus] = useState(todo.completed);
+  const dispatch = useDispatch();
+
+  const onCheck = () => {
+    setFocus((prevFocus) => !prevFocus);
+    dispatch(toggleTodo(todo.id));
   };
 
-  const handleTick = () => {
-    handleFocus();
-    const { index, completed } = item;
-    updateStatus(index, !completed);
-  };
-
-  const handleUpdate = () => {
-    const trimmedTitle = title.trim();
-    if (trimmedTitle && trimmedTitle !== item.description) {
-      updateItem(item.index, trimmedTitle);
-    }
-    setTitle('');
-  };
-
-  const handleChange = ({ target }) => {
+  const onText = ({ target }) => {
     setTitle(target.value);
   };
 
-  const handleOption = () => {
-    if (focus) {
-      removeItem(item.index);
+  const onBlur = ({ target }) => {
+    const newTitle = title.trim();
+    if (newTitle && newTitle !== target.placeholder) {
+      dispatch(updateTodo(todo.id, newTitle));
     }
   };
 
-  const fulfilled = item.completed ? ' fulfilled' : '';
-  const [selection, draggable] = (
-    focus
-      ? [' item-focus', 'fa-trash']
-      : ['', 'fa-ellipsis-vertical']
-  );
-
   return (
-    <li id={item.index} className={`flex-align-center row${fulfilled}${selection}`}>
-      <input type="checkbox" onChange={handleTick} checked={item.completed} />
+    <li id={todo.id} className={styles.TodoItem}>
+      <input type="checkbox" onChange={onCheck} checked={focus} />
       <input
         type="text"
-        className="task-desc"
-        onClick={handleFocus}
-        onBlur={handleUpdate}
-        onChange={handleChange}
+        onChange={onText}
+        onBlur={onBlur}
         value={title}
-        placeholder={item.description}
+        placeholder={todo.title}
       />
-      <button
-        type="button"
-        aria-label="Customize Task"
-        className={`fa-solid ${draggable}`}
-        onClick={handleOption}
-      />
+      <button type="button" aria-label="trash" className="fa fa-trash" />
     </li>
   );
 };
 
-ToDoItem.propTypes = { todo: PropTypes.instanceOf(Object).isRequired };
+TodoItem.propTypes = { todo: PropTypes.instanceOf(Object).isRequired };
 
-export default ToDoItem;
+export default TodoItem;
