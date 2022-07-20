@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './redux/store';
-import $getById from './helpers/dom-utils';
+import $getById from './utils/dom-utils';
 
 import './index.css';
 

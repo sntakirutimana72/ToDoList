@@ -11,9 +11,9 @@ export const actions = {
 
 export const fetchTodo = { type: actions.FETCH };
 
-export const deleteCompletedTodo = { type: actions.DELETE_COMPLETED };
+export const todosDeleted = { type: actions.DELETE_COMPLETED };
 
-export const addTodo = (title) => ({
+export const todoAdded = (title) => ({
   type: actions.ADD,
   payload: {
     title,
@@ -22,18 +22,18 @@ export const addTodo = (title) => ({
   },
 });
 
-export const updateTodo = (id, title) => ({
+export const todoUpdated = (id, title) => ({
   type: actions.UPDATE,
   id,
   title,
 });
 
-export const toggleTodo = (id) => ({
+export const todoToggled = (id) => ({
   type: actions.TOGGLE,
   id,
 });
 
-export const deleteTodo = (id) => ({
+export const todoDeleted = (id) => ({
   type: actions.DELETE,
   id,
 });

@@ -1,6 +1,7 @@
 .ClearButton {
   float: right;
   font-size: 12px;
+  margin: 2px 0;
   padding: 0.225rem 0.515rem;
   background-color: #f5f6fa;
   font-family: "Roboto Slab", sans-serif;
@@ -10,4 +11,15 @@
 .ClearButton:focus {
   color: white;
   background-color: orangered;
+}
+
+.ClearButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.ClearButton:disabled:hover,
+.ClearButton:disabled:focus {
+  color: inherit;
+  background-color: #f5f6fa;
 }

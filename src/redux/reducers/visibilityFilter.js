@@ -3,7 +3,7 @@ import {
   visibilityFilters,
 } from '../actions/visibilityFilter';
 
-const reducer = (state = visibilityFilters.SHOW_ALL, action) => {
+export default (state = visibilityFilters.SHOW_ALL, action) => {
   switch (action.type) {
     case SET_VISIBILITY_FILTER:
       return action.filter;
@@ -11,9 +11,3 @@ const reducer = (state = visibilityFilters.SHOW_ALL, action) => {
       return state;
   }
 };
-
-export default reducer;
-
-export const getVisibilityFilter = (filter) => ({ visibilityFilter }) => (
-  filter === visibilityFilter
-);

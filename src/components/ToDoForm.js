@@ -1,14 +1,24 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { todoAdded } from '../redux/actions/todos';
 import './TodoForm.css';
 
 const TodoForm = () => {
   const [title, setTitle] = useState('');
+  const dispatch = useDispatch();
 
-  const onText = ({ target }) => {
+  const onChange = ({ target }) => {
     setTitle(target.value);
   };
+
   const onSubmit = (e) => {
     e.preventDefault();
+    const refinedTitle = title.trim();
+
+    if (refinedTitle !== '') {
+      dispatch(todoAdded(title));
+      setTitle('');
+    }
   };
 
   return (
@@ -19,7 +29,7 @@ const TodoForm = () => {
           type="text"
           name="title"
           value={title}
-          onChange={onText}
+          onChange={onChange}
           placeholder="Add Title"
         />
         <button

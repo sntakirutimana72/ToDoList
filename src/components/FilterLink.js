@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setVisibilityFilter } from '../redux/actions/visibilityFilter';
-import { getVisibilityFilter } from '../redux/reducers/visibilityFilter';
+import getVisibilityFilter from '../redux/effects/visibilityEffects';
 
 import styles from './FilterLink.module.css';
 

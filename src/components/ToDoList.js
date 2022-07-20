@@ -1,11 +1,19 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import TodoItem from './TodoItem';
-import { getVisibleTodos } from '../redux/reducers/todos';
+import { fetchTodo } from '../redux/actions/todos';
+import { selectByVisibility } from '../redux/effects/todosEffects';
 
 import styles from './TodoList.module.css';
 
 const TodoList = () => {
-  const todos = useSelector(getVisibleTodos);
+  const todos = useSelector(selectByVisibility);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchTodo);
+  }, []);
+
   const isEmpty = todos.length === 0;
 
   return (
