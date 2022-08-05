@@ -1,17 +1,24 @@
-let store = {};
+import { Provider } from 'react-redux';
+import { render as ren } from '@testing-library/react';
+import store from '../redux/store';
 
-const localStorageMock = {
+let storage = {};
+
+export const localStorageMock = {
   setItem: jest.fn((key, item) => {
-    store[key] = item;
-    console.log(store);
+    storage[key] = item;
   }),
-  getItem: jest.fn((key) => store[key]),
+  getItem: jest.fn((key) => storage[key]),
   removeItem: jest.fn((key) => {
-    delete store[key];
+    delete storage[key];
   }),
   clear: jest.fn(() => {
-    store = {};
+    storage = {};
   }),
 };
 
-export default localStorageMock;
+export const render = (component) => ren(
+  <Provider store={store}>
+    {component}
+  </Provider>,
+);

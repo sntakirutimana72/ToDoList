@@ -1,19 +1,19 @@
 import { v4 as uid } from 'uuid';
 
 export const actions = {
-  FETCH: 'todos/FETCH_TODO',
-  TOGGLE: 'todos/TOGGLE_TODO',
-  ADD: 'todos/ADD_TODO',
-  UPDATE: 'todos/UPDATE_TODO',
-  DELETE: 'todos/DELETE_TODO',
-  DELETE_COMPLETED: 'todos/DELETE_COMPLETED',
+  FETCH: 'todos/fetchTodo',
+  TOGGLE: 'todos/toggleTodo',
+  ADD: 'todos/addTodo',
+  UPDATE: 'todos/updateTodo',
+  DELETE: 'todos/deleteTodo',
+  DELETE_COMPLETED: 'todos/deleteDoneTodos',
 };
 
 export const fetchTodo = { type: actions.FETCH };
 
-export const todosDeleted = { type: actions.DELETE_COMPLETED };
+export const deleteTodos = { type: actions.DELETE_COMPLETED };
 
-export const todoAdded = (title) => ({
+export const addTodo = (title) => ({
   type: actions.ADD,
   payload: {
     title,
@@ -22,18 +22,18 @@ export const todoAdded = (title) => ({
   },
 });
 
-export const todoUpdated = (id, title) => ({
+export const updateTodo = (id, title) => ({
   type: actions.UPDATE,
   id,
   title,
 });
 
-export const todoToggled = (id) => ({
+export const toggleTodo = (id) => ({
   type: actions.TOGGLE,
   id,
 });
 
-export const todoDeleted = (id) => ({
+export const deleteTodo = (id) => ({
   type: actions.DELETE,
   id,
 });

@@ -1,17 +1,17 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { todosHasCompleted } from '../redux/effects/todosEffects';
-import { todosDeleted } from '../redux/actions/todos';
+import { hasDoneTodos } from '../redux/effects/todosEffects';
+import { deleteTodos } from '../redux/actions/todos';
 
 import styles from './ClearButton.module.css';
 
 const ClearButton = () => {
-  const active = useSelector(todosHasCompleted);
+  const active = useSelector(hasDoneTodos);
   const dispatch = useDispatch();
 
   return (
     <button
       type="button"
-      onClick={() => dispatch(todosDeleted)}
+      onClick={() => dispatch(deleteTodos)}
       disabled={active}
       className={styles.ClearButton}
     >

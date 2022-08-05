@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { todoAdded } from '../redux/actions/todos';
+import { addTodo } from '../redux/actions/todos';
 import './TodoForm.css';
 
 const TodoForm = () => {
@@ -16,7 +16,7 @@ const TodoForm = () => {
     const refinedTitle = title.trim();
 
     if (refinedTitle !== '') {
-      dispatch(todoAdded(title));
+      dispatch(addTodo(title));
       setTitle('');
     }
   };

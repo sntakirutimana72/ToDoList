@@ -4,6 +4,10 @@
   gap: 10px;
 }
 
+.TodoItem[stat="true"] {
+  opacity: 0.4;
+}
+
 .TodoItem:not(:last-child) {
   margin-bottom: 10px;
   border-bottom: solid 1px #e8e8e880;

@@ -39,7 +39,7 @@ export const deleteCompletedEffect = (state) => {
   return storeEffect(stateAfter);
 };
 
-export const todosHasCompleted = ({ todos }) => todos.find(
+export const hasDoneTodos = ({ todos }) => todos.find(
   ({ completed }) => completed,
 ) === undefined;
 

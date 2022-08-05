@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { todoToggled, todoUpdated, todoDeleted } from '../redux/actions/todos';
+import { toggleTodo, updateTodo, deleteTodo } from '../redux/actions/todos';
 
 import styles from './TodoItem.module.css';
 
@@ -9,20 +9,20 @@ const TodoItem = ({ todo }) => {
   const [title, setTitle] = useState(todo.title);
   const dispatch = useDispatch();
 
-  const onCheck = () => dispatch(todoToggled(todo.id));
-  const onDelete = () => dispatch(todoDeleted(todo.id));
+  const onCheck = () => dispatch(toggleTodo(todo.id));
+  const onDelete = () => dispatch(deleteTodo(todo.id));
   const onChange = ({ target }) => setTitle(target.value);
   const onBlur = ({ target }) => {
     const refinedTitle = title.trim();
     if (refinedTitle === '') {
       setTitle(target.placeholder);
     } else if (refinedTitle !== target.placeholder) {
-      dispatch(todoUpdated(todo.id, refinedTitle));
+      dispatch(updateTodo(todo.id, refinedTitle));
     }
   };
 
   return (
-    <li id={todo.id} className={styles.TodoItem}>
+    <li id={todo.id} className={styles.TodoItem} stat={`${todo.completed}`}>
       <input type="checkbox" onChange={onCheck} checked={todo.completed} />
       <input
         type="text"

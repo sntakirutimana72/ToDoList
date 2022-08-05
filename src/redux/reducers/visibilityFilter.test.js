@@ -8,15 +8,17 @@ describe('VisibilityFilter Actions', () => {
     expect(
       reducer(
         visibilityFilters.SHOW_ALL,
-        setVisibilityFilter(visibilityFilters.SHOW_ACTIVE)
-      )).toBe(visibilityFilters.SHOW_ACTIVE);
+        setVisibilityFilter(visibilityFilters.SHOW_ACTIVE),
+      ),
+    ).toBe(visibilityFilters.SHOW_ACTIVE);
   });
 
   it('UNKNOWN TYPE', () => {
     expect(
       reducer(
         visibilityFilters.SHOW_ALL,
-        { type: '' }
-      )).toBe(visibilityFilters.SHOW_ALL);
+        { type: '' },
+      ),
+    ).toBe(visibilityFilters.SHOW_ALL);
   });
 });

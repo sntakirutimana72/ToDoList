@@ -1,10 +1,16 @@
 import { v4 as uid } from 'uuid';
 import {
-  actions, addTodo, deleteCompletedTodo, deleteTodo, fetchTodo, toggleTodo,
+  actions,
+  addTodo,
+  updateTodo,
+  deleteTodos,
+  deleteTodo,
+  fetchTodo,
+  toggleTodo,
 } from '../actions/todos';
 import reducer from './todos';
-import { storeItems } from '../../helpers/localstorage';
-import localStorageMock from '../../helpers/test-utils';
+import { storeItems } from '../../utils/localstorage';
+import localStorageMock from '../../utils/test-utils';
 
 global.localStorage = localStorageMock;
 
@@ -36,19 +42,28 @@ describe('Todos Actions', () => {
     storeItems(initialItems);
     const [firstTodo] = initialItems;
     expect(
-      reducer(initialItems, toggleTodo(firstTodo.id))
-    ).toEqual([{...firstTodo, completed: true}]);
-    expect(reducer(null, fetchTodo)).toEqual([{...firstTodo, completed: true}]);
+      reducer(initialItems, toggleTodo(firstTodo.id)),
+    ).toEqual([{ ...firstTodo, completed: true }]);
+    expect(reducer(null, fetchTodo)).toEqual([{ ...firstTodo, completed: true }]);
+  });
+
+  it(actions.UPDATE, () => {
+    storeItems(initialItems);
+    const [firstTodo] = initialItems;
+    expect(
+      reducer(initialItems, updateTodo(firstTodo.id, 'cook')),
+    ).toEqual([{ ...firstTodo, title: 'cook' }]);
+    expect(reducer(null, fetchTodo)).toEqual([{ ...firstTodo, title: 'cook' }]);
   });
 
   it(actions.DELETE_COMPLETED, () => {
     const state = [
-      {id: uid(), title: 'SECOND', completed: true},
-      {id: uid(), title: 'THIRD', completed: true},
+      { id: uid(), title: 'SECOND', completed: true },
+      { id: uid(), title: 'THIRD', completed: true },
       ...initialItems,
     ];
     storeItems(state);
-    expect(reducer(state, deleteCompletedTodo)).toEqual(initialItems);
+    expect(reducer(state, deleteTodos)).toEqual(initialItems);
     expect(reducer(null, fetchTodo)).toEqual(initialItems);
   });
 
